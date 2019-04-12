@@ -1,3 +1,9 @@
+"""
+Author: Srihari
+Website: PitchVision
+Verifying the Login page
+
+"""
 from selenium import webdriver
 import unittest
 import time
