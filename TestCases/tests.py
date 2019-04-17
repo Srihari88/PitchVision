@@ -39,16 +39,16 @@ class MyUser(unittest.TestCase):
         h4.MoveUserManagement()
         h4.UserPage()
 
-    def test_FHomePage(self):
-        print(" Hello second method")
-        ho = HomePageElements(driver)
-        ho.AWelcomeLink()
-        time.sleep(2)
-        ho.BLogout()
+    # def test_FHomePage(self):
+    #     print(" Hello second method")
+    #     ho = HomePageElements(driver)
+    #     ho.AWelcomeLink()
+    #     time.sleep(2)
+    #     ho.BLogout()
 
     @classmethod
     def tearDownClass(cls):
-        driver.close()
+        # driver.close()
         print(" Application closed")
 
 

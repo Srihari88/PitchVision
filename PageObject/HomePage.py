@@ -51,6 +51,4 @@ class HomePageElements():
 
     def UserPage(self):
         Hover2 = self.driver.find_element_by_xpath(self.Users)
-        action2 = webdriver.ActionChains(self.driver).move_to_element(Hover2)
-        action2.click()
-        time.sleep(2)
+        Hover2.click()
