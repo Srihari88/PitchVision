@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
+
 import time
 
 
@@ -16,6 +18,12 @@ class HomePageElements():
         self.Admin = "//a[@id='menu_admin_viewAdminModule']"
         self.Usermanagement = "//a[@id='menu_admin_UserManagement']"
         self.Users = "//a[@id='menu_admin_viewSystemUsers']"
+        self.Username = "//input[@id='searchSystemUser_userName']"
+        self.UserRole = "//select[@id='searchSystemUser_userType']"
+        self.EmployeeName = "//input[@id='searchSystemUser_employeeName_empName']"
+        self.Status = "//select[@id='searchSystemUser_status']"
+        self.Seach = "//input[@id='searchBtn']"
+        self.Data = "//form[@id='frmList_ohrmListComponent']"
 
     def AWelcomeLink(self):
         self.driver.find_element_by_xpath(self.welcome).click()
@@ -52,3 +60,18 @@ class HomePageElements():
     def UserPage(self):
         Hover2 = self.driver.find_element_by_xpath(self.Users)
         Hover2.click()
+
+    def EnterUsername(self, U_name):
+        self.driver.find_element_by_xpath(self.Username).clear()
+        self.driver.find_element_by_xpath(self.Username).send_keys(U_name)
+
+    def Userrole(self):
+        select = Select(self.driver.find_element_by_xpath(self.UserRole))
+        select.select_by_index(2)
+
+    def Seach_User(self):
+        self.driver.find_element_by_xpath(self.Seach).click()
+
+    def Data_Search(self):
+        Userdata = self.driver.find_element_by_xpath(self.Data)
+        print(Userdata.text)

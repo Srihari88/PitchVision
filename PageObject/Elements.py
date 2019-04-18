@@ -20,3 +20,5 @@ class Elementspage():
 
     def click_submit(self):
         self.driver.find_element_by_name(self.Submit).click()
+
+

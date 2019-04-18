@@ -20,6 +20,8 @@ class MyUser(unittest.TestCase):
         lo.enter_password("admin123")
         lo.click_submit()
         time.sleep(5)
+        cur = driver.current_url
+        assert cur in 'https://opensource-demo.orangehrmlive.com/index.php/dashboard'
 
     def test_BDistribution(self):
         h1 = HomePageElements(driver)
@@ -38,6 +40,16 @@ class MyUser(unittest.TestCase):
         h4.MoveAdminPage()
         h4.MoveUserManagement()
         h4.UserPage()
+
+    def test_FUserFourm(self):
+        h5 = HomePageElements(driver)
+        h5.EnterUsername("SriHari")
+        h5.Userrole()
+
+    def test_HSearch(self):
+        h6 = HomePageElements(driver)
+        h6.Seach_User()
+        h6.Data_Search()
 
     # def test_FHomePage(self):
     #     print(" Hello second method")
