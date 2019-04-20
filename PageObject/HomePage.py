@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
-
 import time
 
 
@@ -24,6 +23,26 @@ class HomePageElements():
         self.Status = "//select[@id='searchSystemUser_status']"
         self.Seach = "//input[@id='searchBtn']"
         self.Data = "//form[@id='frmList_ohrmListComponent']"
+
+        # Add user
+
+        self.Add = "//input[@id='btnAdd']"
+        self.UserAddRole = "//select[@id='systemUser_userType']"
+        self.AddEmplyeeName = "//input[@id='systemUser_employeeName_empName']"
+        self.AddUsername = "//input[@id='systemUser_userName']"
+        self.AddStatus = "//select[@id='systemUser_status']"
+        self.addpassword = "//input[@id='systemUser_password']"
+        self.Addconfirmpassword = "//input[@id='systemUser_confirmPassword']"
+        self.SaveAddedUser = "//input[@id='btnSave']"
+
+        # Add user Label
+        self.labelUserRole = "//label[@for='systemUser_userType']"
+        self.labelEmplyeename = "//label[@for='systemUser_employeeName']"
+        self.labelUsername = "//label[@for='systemUser_userName']"
+        self.labelStatus = "//label[@for='systemUser_status']"
+        self.labelPassword = "//label[@for='systemUser_password']"
+        self.labelConfirmpassword = "//label[@for='systemUser_confirmPassword']"
+        self.labelverifytext = "//div[@class='helpText']/span"
 
     def AWelcomeLink(self):
         self.driver.find_element_by_xpath(self.welcome).click()
@@ -75,3 +94,64 @@ class HomePageElements():
     def Data_Search(self):
         Userdata = self.driver.find_element_by_xpath(self.Data)
         print(Userdata.text)
+
+    def Add_Addbutton(self):
+        self.driver.find_element_by_xpath(self.Add).click()
+
+    def user_Addrole(self):
+        select1 = Select(self.driver.find_element_by_xpath(self.UserAddRole))
+        select1.select_by_visible_text("Admin")
+
+    def add_employee(self, empadd):
+        self.driver.find_element_by_xpath(self.AddEmplyeeName).send_keys(empadd)
+
+    def add_username(self, addusername):
+        self.driver.find_element_by_xpath(self.AddUsername).send_keys(addusername)
+
+    def add_status(self):
+        addstat = Select(self.driver.find_element_by_xpath(self.AddStatus))
+        addstat.select_by_visible_text("Enabled")
+
+    def Addpassword(self, passd):
+        self.driver.find_element_by_xpath(self.addpassword).send_keys(passd)
+
+    def confirmpassword(self, con_password):
+        self.driver.find_element_by_xpath(self.Addconfirmpassword).send_keys(con_password)
+
+    def SaveUser(self):
+        self.driver.find_element_by_xpath(self.SaveAddedUser).click()
+
+    def verify_labelUserRole(self):
+        userrole = self.driver.find_element_by_xpath(self.labelUserRole).text
+        print(userrole)
+        assert userrole in 'User Role *'
+
+    def verify_EmplyeeName(self):
+        userrole1 = self.driver.find_element_by_xpath(self.labelEmplyeename).text
+        print(userrole1)
+        assert userrole1 in 'Employee Name *'
+
+    def verify_Username(self):
+        userrole2 = self.driver.find_element_by_xpath(self.labelUsername).text
+        print(userrole2)
+        assert userrole2 in 'Username *'
+
+    def verify_Status(self):
+        userrole2 = self.driver.find_element_by_xpath(self.labelStatus).text
+        print(userrole2)
+        assert userrole2 in 'Status *'
+
+    def verify_Password(self):
+        userrole3 = self.driver.find_element_by_xpath(self.labelPassword).text
+        print(userrole3)
+        assert userrole3 in 'Password'
+
+    def verify_confirmpasswrod(self):
+        userrole4 = self.driver.find_element_by_xpath(self.labelConfirmpassword).text
+        print(userrole4)
+        assert userrole4 in 'Confirm Password'
+
+    def verify_helptext(self):
+        help = self.driver.find_element_by_xpath(self.labelverifytext).text
+        print(help)
+        assert help in 'For a strong password, please use a hard to guess combination of text with upper and lower case characters, symbols and numbers'
